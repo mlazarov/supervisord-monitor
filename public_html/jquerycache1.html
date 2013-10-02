@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery cache problem demo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript">
+	$.ajax("test.php?zzzzzz",{async:true,cache:false,success: function ($data){ cnt++;$('#out').append(" FFFFFF: "+$data+'<br/>');}});
+	//function gogo(){
+		location.href="jquerycache1.html#test";
+		var cnt=0;
+		for($i=0;$i<20;$i++){
+			$.ajax("test.php",{async:true,cache:false,success: function ($data){ cnt++;$('#out').append(cnt+" new: "+$data+'<br/>');}});
+			if($i==10) location.href="jquerycache1.html#test1";
+			
+		}
+		//return false;
+	//}
+
+    </script>
+  </head>
+  <body>
+	<a href="jquerycache1.html">Reload</a>
+	<div style="color:red" id="err"></div>
+	
+	<div id="consoler"></div>
+    <div id="out"></div>
+    <p>
+    </p>
+  </body>
+</html>

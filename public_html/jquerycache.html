@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>jQuery cache problem demo</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+      var seen = [];
+      var cnt = 0;
+      jQuery(function($) {
+          for (var i = 0; i < 20; i++)
+          $.ajax("test.php", {
+              cache: false, 
+              async: true, 
+              beforeSend: function(jqXHR, settings) {
+                  //var text = $("#out").html();
+                  text = settings.url;
+                  if (seen.indexOf(settings.url) != -1){
+                      text += " <span style=\"color:red\">DUPLICATE!!!</span>";
+			$('#err').html("<b>ERROR</b>");
+		  }
+                  else
+                      text += " <span style=\"color:green\">ok</span>";
+                  text += "<br />";
+                  $("#out").append(text);
+		 //$('#consoler').append('<div id="id'+i+'">'+settings.url+'</div>');
+                  seen.push(settings.url);
+              },
+	      success: function(data){
+			cnt++;
+			console.log(data);
+		 	$('#consoler').append(cnt+': '+data+'<br/>');
+	      }
+          }
+      )});
+      
+    </script>
+  </head>
+  <body>
+    <h1>jQuery cache problem demo</h1>
+	<div style="color:red" id="err"></div>
+	<div id="consoler"></div>
+    <p>
+      Keep reloading this page until the error occures. Most likely only
+      happens on fast machines. When the machine is able to send two Ajax
+      requests in the same millisecond then the second request may be
+      answered by the browser cache which is not the desired behavior when
+      the cache=false option of jQuery is used.
+    </p>
+    <div id="out"></div>
+    <p>
+    <a href="jquerycache.html">Reload</a>
+    </p>
+  </body>
+</html>
