@@ -13,7 +13,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<!--title>Support Center</title//-->
+	<title>Supervisord Monitoring</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap-responsive.min.css"/>
@@ -72,8 +72,13 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 					<?php
 					$CI = &get_instance();
 					foreach($procs as $item){
-		
-						$check = $CI->_request($name,'readProcessStderrLog',array($item['name'],-1000,0));
+						
+						if($item['group'] != $item['name']) $item_name = $item['group'].":".$item['name'];
+						else $item_name = $item['name'];
+						
+						$check = $CI->_request($name,'readProcessStderrLog',array($item_name,-1000,0));
+						if(is_array($check)) $check = print_r($check,1);
+
 						if(!is_array($item)){ echo '<tr><td colspan="4">'.$item.'</td></tr>';continue;}
 						$pid = $uptime = '&nbsp;';
 						$status = $item['statename'];
@@ -90,11 +95,11 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 						?>
 						<tr>
 							<td><?php
-								echo $item['name'];
+								echo $item_name;
 								if($check){
 									$alert = true;
-		echo '<span class="pull-right"><a href="/control/clear/'.$name.'/'.$item['name'].'" id="'.$name.'_'.$item['name'].'" onclick="return false" data-toggle="popover" data-message="'.htmlspecialchars($check).
-			'" data-original-title="'.$item['name'].'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="/img/alert_icon.png" /></a></span>';
+		echo '<span class="pull-right"><a href="/control/clear/'.$name.'/'.$item_name.'" id="'.$name.'_'.$item_name.'" onclick="return false" data-toggle="popover" data-message="'.htmlspecialchars($check).
+			'" data-original-title="'.$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="/img/alert_icon.png" /></a></span>';
 								}
 								?>
 							</td>
@@ -112,9 +117,9 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 									</ul>
 								</div//-->
 								<?php if($status=='RUNNING'){ ?>
-								<a href="/control/stop/<?php echo $name.'/'.$item['name'];?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
+								<a href="/control/stop/<?php echo $name.'/'.$item_name;?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
 								<?php } if($status=='STOPPED'){ ?>
-								<a href="/control/start/<?php echo $name.'/'.$item['name'];?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
+								<a href="/control/start/<?php echo $name.'/'.$item_name;?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
 								<?php } ?>
 							</td>
 						</tr>
