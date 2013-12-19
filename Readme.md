@@ -12,6 +12,28 @@
 * Mute sound alerts (after some time auto resume)
 * Monitor process uptime status
 
+## Install
+
+1. Clone supervisord-monitor to your vhost/webroot:
+```
+git clone https://github.com/mlazarov/supervisord-monitor.git
+```
+2. Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
+```
+[inet_http_server]
+port=*:9001
+```
+Do not forget to restart supervisord service after changing supervisord.conf
+
+3. Edit supervisord-monitor configuration file and add all your supervisord servers
+```
+vim application/config/supervisor.php
+```
+
+4. Configure your web server to point one of your vhosts to 'public_html' directory.
+5. Open in your web browser  and enter your vhost url.
+
+
 ## License
 
 MIT License
