@@ -34,6 +34,19 @@ vim application/config/supervisor.php
 5. Open web browser and enter your vhost url.
 
 
+## Redmine integration
+1. Open configuration file:
+```
+vim application/config/config.php
+```
+2. Change this lines with your redmine url and auto assigne id:
+```
+// Path to Redmine new issue url
+$config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
+// Default Redmine assigne ID
+$config['redmine_assigne_id'] = '69';
+```
+
 ## License
 
 MIT License
