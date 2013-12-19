@@ -31,7 +31,7 @@ vim application/config/supervisor.php
 ```
 
 4. Configure your web server to point one of your vhosts to 'public_html' directory.
-5. Open in your web browser  and enter your vhost url.
+5. Open web browser and enter your vhost url.
 
 
 ## License
