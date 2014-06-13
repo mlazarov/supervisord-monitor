@@ -22,6 +22,8 @@ git clone https://github.com/mlazarov/supervisord-monitor.git
 ```
 [inet_http_server]
 port=*:9001
+username="yourusername"
+password="yourpass"
 ```
 Do not forget to restart supervisord service after changing supervisord.conf
 
