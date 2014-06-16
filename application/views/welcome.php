@@ -1,6 +1,6 @@
 <?php
 
-$refresh = 10;
+$refresh = 30;
 
 if(isset($_GET['mute'])){
 	$mute = ($_GET['mute']?(time()+600):0);
@@ -62,9 +62,11 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 		}
 	
 		?>
-		<div class="row">
+		<div class="row server-list">
 				<?php
 				$alert = false;
+				$stderr = false;
+				 $CI = &get_instance();
 				foreach($list as $name=>$procs){
 					$state = 0;
 					foreach($procs as $item){
@@ -74,17 +76,15 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 						elseif($status=='FATAL') $statecode = '2';
 						elseif($status=='STOPPED') $statecode = '3';
 						else $statecode = '4';
-
+						
 						$state = ($statecode > $state)?$statecode:$state;
 					}
-
 					if($state==0) $class = 'success';
 					elseif($state==1) $class = 'info';
 					elseif($state==2) $class = 'important';
 					elseif($state==3) $class = 'inverse';
-					else $class = 'error';
 				?>
-				<div class="span4 order-<? echo $state ?>">
+				<div class="span4 server" data-order="<? echo $state ?>">
 				<table class="table table-bordered table-condensed table-striped">
 					<thead>
 						<tr><th class="<? echo $class ?>" colspan="4"><?php echo $name;?>  <a class="icon-plus expander" href="#"></a></th></tr>
