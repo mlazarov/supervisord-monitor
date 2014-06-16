@@ -1,5 +1,6 @@
 body{
 	cursor: default;
+	font-size: 1.2em;
 }
 .popover {
 	max-width:	450px;
@@ -14,6 +15,11 @@ body{
 	float: right;
 }
 
+.container {
+	width:100%;
+	padding-left: 50px;
+}
+
 @media (min-width: 1800px){
 	.container {
 		width: 1700px;
@@ -26,6 +32,26 @@ body{
 	body {
 		padding-top: 60px;
 	}
+}
+
+th.success {
+	background-color:#468847 !important;
+}
+
+th.info {
+	background-color:#3a87ad !important;
+}
+
+th.important {
+	background-color:#b94a48 !important;
+}
+
+th.inverse {
+	background-color:#fcf8e3 !important;
+}
+
+th.error {
+	background-color:#f2dede !important;
 }
 
 
