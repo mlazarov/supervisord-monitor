@@ -32,7 +32,7 @@ if ( ! function_exists('xml_parser_create'))
  */
 class CI_Xmlrpc {
 
-	var $debug			= FALSE;	// Debugging on or off
+	var $debug			= false;	// Debugging on or off
 	var $xmlrpcI4		= 'i4';
 	var $xmlrpcInt		= 'int';
 	var $xmlrpcBoolean	= 'boolean';
@@ -168,8 +168,13 @@ class CI_Xmlrpc {
 		}
 
 		$this->client = new XML_RPC_Client($path, $parts['host'], $port);
+
 	}
 	// END
+
+	function setCredentials($username, $password) {
+	    $this->client->setCredentials($username, $password);
+	}
 
 	//-------------------------------------
 	//  Set Timeout
@@ -355,6 +360,8 @@ class XML_RPC_Client extends CI_Xmlrpc
 	var $path			= '';
 	var $server			= '';
 	var $port			= 80;
+	var $username		= "";
+	var $password		= "";
 	var $errno			= '';
 	var $errstring		= '';
 	var $timeout		= 5;
@@ -363,11 +370,16 @@ class XML_RPC_Client extends CI_Xmlrpc
 	public function __construct($path, $server, $port=80)
 	{
 		parent::__construct();
-
 		$this->port = $port;
 		$this->server = $server;
 		$this->path = $path;
 	}
+
+	function setCredentials($username, $password) {
+	    $this->username = $username;
+	    $this->password = $password;
+	}
+  
 
 	function send($msg)
 	{
@@ -403,6 +415,11 @@ class XML_RPC_Client extends CI_Xmlrpc
 		$op .= "Host: {$this->server}$r";
 		$op .= "Content-Type: text/xml$r";
 		$op .= "User-Agent: {$this->xmlrpcName}$r";
+
+		if ($this->username != '' && $this->password != '') {
+      		$op .= "Authorization: Basic ".base64_encode($this->username.':'.$this->password).$r;
+    	}
+
 		$op .= "Content-Length: ".strlen($msg->payload). "$r$r";
 		$op .= $msg->payload;
 
