@@ -10,6 +10,9 @@ class MY_Controller extends CI_Controller{
 		$this->{$server}->initialize();
 		$this->{$server}->server($config['url'],$config['port']);
 		$this->{$server}->method('supervisor.'.$method);
+		if(isset($config['username']) && isset($config['password'])){
+			$this->{$server}->setCredentials($config['username'], $config['password']);
+		}
 		$this->{$server}->request($request);
 			
                 if(!$this->{$server}->send_request()){
