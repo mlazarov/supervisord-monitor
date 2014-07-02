@@ -22,6 +22,8 @@ git clone https://github.com/mlazarov/supervisord-monitor.git
 ```
 [inet_http_server]
 port=*:9001
+username="yourusername"
+password="yourpass"
 ```
 Do not forget to restart supervisord service after changing supervisord.conf
 
@@ -47,6 +49,9 @@ $config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
 // Default Redmine assigne ID
 $config['redmine_assigne_id'] = '69';
 ```
+
+## Thanks to ##
+@stvnwrgs - added authentication functionality to supervisord monitor
 
 ## License
 

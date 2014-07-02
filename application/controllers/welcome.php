@@ -3,10 +3,11 @@
 class Welcome extends MY_Controller {
 	public function Index()	{
 		$this->load->helper('date');
-		$server = $this->config->item('supervisor_servers');
-		foreach($server as $name=>$config){
+		$servers = $this->config->item('supervisor_servers');
+		foreach($servers as $name=>$config){
 			$data['list'][$name] = $this->_request($name,'getAllProcessInfo');
 		}
+		$data['cfg'] = $servers;
 		$this->load->view('welcome',$data);
 	}
 	public function getAll(){

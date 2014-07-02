@@ -68,7 +68,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 				foreach($list as $name=>$procs){?>
 				<div class="span4">
 				<table class="table table-bordered table-condensed table-striped">
-					<tr><th colspan="4"><?php echo $name;?></th></tr>
+					<tr><th colspan="4"><?php echo $name; if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green pull-right" style="color:blue" title="Authenticated server connection"></i>';}?></th></tr>
 					<?php
 					$CI = &get_instance();
 					foreach($procs as $item){
