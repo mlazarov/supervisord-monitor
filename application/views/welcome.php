@@ -65,10 +65,16 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 		<div class="row">
 				<?php
 				$alert = false;
-				foreach($list as $name=>$procs){?>
+				foreach($list as $name=>$procs){
+					$parsed_url = parse_url($cfg[$name]['url']);
+					$ui_url = 'http://' . $cfg[$name]['username'] . ':' . $cfg[$name]['password'] . '@' . $parsed_url['host'] . ':9001/';
+				?>
 				<div class="span4">
 				<table class="table table-bordered table-condensed table-striped">
-					<tr><th colspan="4"><?php echo $name; if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green pull-right" style="color:blue" title="Authenticated server connection"></i>';}?></th></tr>
+					<tr><th colspan="4">
+						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <i><?php echo $parsed_url['host']; ?></i>
+						<?php if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green pull-right" style="color:blue" title="Authenticated server connection"></i>';}?>
+					</th></tr>
 					<?php
 					$CI = &get_instance();
 					foreach($procs as $item){
