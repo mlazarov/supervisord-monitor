@@ -31,7 +31,7 @@ class MY_XML_RPC_Client extends XML_RPC_Client {
 	}
 	
 	function sendPayload($msg){
-		$fp = @fsockopen($this->server, $this->port,$this->errno, $this->errstr, $this->timeout);
+		$fp = @fsockopen($this->server, $this->port,$this->errno, $this->errstr, 0.1);
 
 		if ( ! is_resource($fp)){
 			error_log($this->xmlrpcstr['http_error']);
