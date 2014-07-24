@@ -53,6 +53,13 @@ $config['redmine_assigne_id'] = '69';
 ## Thanks to ##
 @stvnwrgs - added authentication functionality to supervisord monitor
 
+## Who uses Supervisord Monitor? ##
+
+[EasyWpress - wordpress hosting company](http://easywpress.com)
+
+
+If you've used Supervisord Monitor Tool send me email to martin@lazarov.bg to add your project/company to this list.
+
 ## License
 
 MIT License
