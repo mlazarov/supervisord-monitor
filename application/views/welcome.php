@@ -154,7 +154,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
     </div> <!-- /container -->
 	
 	<div class="footer">
-		<p>Page rendered in <strong>{elapsed_time}</strong> seconds</p>
+		<p>Powered by <a href="https://github.com/mlazarov/supervisord-monitor" target="_blank">Supervisord Monitor</a> | Page rendered in <strong>{elapsed_time}</strong> seconds</p>
 	</div>
 	<script>
 	function show_content($param){
