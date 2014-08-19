@@ -1,7 +1,5 @@
 <?php
 
-$refresh = 10;
-
 if(isset($_GET['mute'])){
 	$mute = ($_GET['mute']?(time()+600):0);
 	if($mute) setcookie('mute',$mute,$mute,'/');
@@ -21,7 +19,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 	<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 	<noscript>
-	<meta http-equiv="refresh" content="10">
+	<meta http-equiv="refresh" content="<?php echo $this->config->item('refresh');?>">
 	</noscript>
 </head>
 <body>
@@ -175,7 +173,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 	$('.pop').popover(
 		{content: show_content,html:true,placement: 'bottom'}
 	);
-	var $refresh = <?php echo $refresh;?>;
+	var $refresh = <?php echo $this->config->item('refresh');?>;
 	var $timer = false;
 	$(window).load(function() {
 		startTimer();

@@ -17,4 +17,6 @@ $config['supervisor_servers'] = array(
         ),
 );
 
+$config['refresh'] = 10;
+
 ?>
