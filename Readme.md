@@ -18,8 +18,9 @@
 ```
 git clone https://github.com/mlazarov/supervisord-monitor.git
 ```
+
 2. Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
-```
+```ini
 [inet_http_server]
 port=*:9001
 username="yourusername"
