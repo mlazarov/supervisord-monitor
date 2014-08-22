@@ -42,7 +42,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 				echo "Mute";
 			}
 		;?></a></li>
-		<li><a href="/">Refresh <b id="refresh">(<?php echo $refresh;?>)</b> &nbsp;</a></li>
+		<li><a href="/">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
               <li><a href="mailto:martin@lazarov.bg">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
