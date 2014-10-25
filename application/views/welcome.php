@@ -65,7 +65,12 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 				$alert = false;
 				foreach($list as $name=>$procs){
 					$parsed_url = parse_url($cfg[$name]['url']);
-					$ui_url = 'http://' . $cfg[$name]['username'] . ':' . $cfg[$name]['password'] . '@' . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
+                    if ( isset($cfg[$name]['username']) && isset($cfg[$name]['password']) ){
+                        $base_url = 'http://' . $cfg[$name]['username'] . ':' . $cfg[$name]['password'] . '@';
+                    }else{
+                        $base_url = 'http://';
+                    }
+                    $ui_url = $base_url . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
 				?>
 				<div class="span4">
 				<table class="table table-bordered table-condensed table-striped">
