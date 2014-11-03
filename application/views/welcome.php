@@ -75,8 +75,13 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 				<div class="span4">
 				<table class="table table-bordered table-condensed table-striped">
 					<tr><th colspan="4">
-						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <i><?php echo $parsed_url['host']; ?></i>
-						<?php if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green pull-right" style="color:blue" title="Authenticated server connection"></i>';}?>
+						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <i><?php echo $parsed_url['host']; ?></i>	
+						<?php if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green" style="color:blue" title="Authenticated server connection"></i>';}?>
+						<span class="server-btns">
+							<a href="/control/stopall/<?php echo $name; ?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i> Stop all</a>
+							<a href="/control/startall/<?php echo $name; ?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i> Start all</a>
+							<a href="/control/restartall/<?php echo $name; ?>" class="btn btn-mini btn-primary" type="button"><i class="icon icon-refresh icon-white"></i> Restart all</a>
+						</span>
 					</th></tr>
 					<?php
 					$CI = &get_instance();
