@@ -1,6 +1,6 @@
 # Supervisord Multi Server Monitoring Tool
 
-![Screenshot] (https://raw.github.com/mlazarov/supervisord-monitor/master/supervisord-monitor.jpg)
+![Screenshot] (https://raw.githubusercontent.com/bcheng049/supervisord-monitor/master/supervisord-monitor.jpg)
 
 ## Features
 
