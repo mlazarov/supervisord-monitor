@@ -18,9 +18,23 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 	<link type="text/css" rel="stylesheet" href="/css/custom.css"/>
 	<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/masonry.pkgd.js"></script>
 	<noscript>
 	<meta http-equiv="refresh" content="<?php echo $this->config->item('refresh');?>">
 	</noscript>
+	<style type="text/css">
+	.item { width: 350px; }
+	</style>
+	<script type="text/javascript">
+	$(function(){
+		var $container = $('div.row-server');
+		// initialize
+		$container.masonry({
+		  columnWidth: 380,
+		  itemSelector: '.item'
+		});
+	});
+	</script>
 </head>
 <body>
 	<div class="navbar navbar-inverse navbar-fixed-top">
@@ -60,9 +74,10 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 		}
 	
 		?>
-		<div class="row">
+		<div class="row-server">
 				<?php
 				$alert = false;
+				$i = 0;
 				foreach($list as $name=>$procs){
 					$parsed_url = parse_url($cfg[$name]['url']);
                     if ( isset($cfg[$name]['username']) && isset($cfg[$name]['password']) ){
@@ -72,7 +87,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
                     }
                     $ui_url = $base_url . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
 				?>
-				<div class="span4">
+				<div class="<?php if($i==1){echo "item w2"; }else{echo "item";} $i++ ?>">
 				<table class="table table-bordered table-condensed table-striped">
 					<tr><th colspan="4">
 						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <i><?php echo $parsed_url['host']; ?></i>	
@@ -200,6 +215,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 		$refresh--;
 		$('#refresh').html('('+$refresh+')');
 		if($refresh<=0){
+			stopTimer();
 			location.href="/";
 		}
 		
