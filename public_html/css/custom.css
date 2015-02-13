@@ -1,6 +1,7 @@
 body{
 	cursor: default;
 }
+span.server-btns{display: block;}
 .popover {
 	max-width:	450px;
 }
