@@ -21,7 +21,7 @@ $config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
 $config['redmine_assigne_id'] = '69';
 
 
-$config['base_url']	= '';
+$config['base_url']	= '/';
 
 /*
 |--------------------------------------------------------------------------

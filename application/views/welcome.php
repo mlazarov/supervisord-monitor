@@ -13,11 +13,11 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 	<meta charset="utf-8">
 	<title>Supervisord Monitoring</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"/>
-	<link type="text/css" rel="stylesheet" href="/css/bootstrap-responsive.min.css"/>
-	<link type="text/css" rel="stylesheet" href="/css/custom.css"/>
-	<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
-	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/bootstrap.min.css');?>"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/bootstrap-responsive.min.css');?>"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/custom.css');?>"/>
+<script type="text/javascript" src="<?php echo site_url('/js/jquery-1.10.1.min.js');?>"></script>
+<script type="text/javascript" src="<?php echo site_url('/js/bootstrap.min.js');?>"></script>
 	<noscript>
 	<meta http-equiv="refresh" content="<?php echo $this->config->item('refresh');?>">
 	</noscript>
@@ -31,10 +31,10 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="/">Support Center</a>
+		  <a class="brand" href="<?php echo site_url('');?>">Support Center</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
+			<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
               <li><a href="?mute=<?php echo $muted?0:1;?>"><i class="icon-music icon-white"></i>&nbsp;<?php
 			if($muted){
 				echo "Unmute";
@@ -42,7 +42,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 				echo "Mute";
 			}
 		;?></a></li>
-		<li><a href="/">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
+		<li><a href="<?php echo site_url();?>">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
               <li><a href="mailto:martin@lazarov.bg">Contact</a></li>
             </ul>
           </div><!--/.nav-collapse -->
