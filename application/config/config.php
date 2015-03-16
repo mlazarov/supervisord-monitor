@@ -15,12 +15,6 @@
 |
 */
 
-// Path to Redmine new issue url
-$config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
-// Default Redmine assigne ID
-$config['redmine_assigne_id'] = '69';
-
-
 $config['base_url']	= '/';
 
 /*

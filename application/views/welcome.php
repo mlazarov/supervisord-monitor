@@ -19,7 +19,10 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 <script type="text/javascript" src="<?php echo site_url('/js/jquery-1.10.1.min.js');?>"></script>
 <script type="text/javascript" src="<?php echo site_url('/js/bootstrap.min.js');?>"></script>
 	<noscript>
+	<?php
+	if($this->config->item('refresh')){ ?>
 	<meta http-equiv="refresh" content="<?php echo $this->config->item('refresh');?>">
+	<?php } ?>
 	</noscript>
 </head>
 <body>
@@ -72,12 +75,12 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
                     }
                     $ui_url = $base_url . $parsed_url['host'] . ':' . $cfg[$name]['port']. '/';
 				?>
-				<div class="span4">
+				<div class="span<?php echo ($this->config->item('supervisor_cols')==2?'6':'4');?>">
 				<table class="table table-bordered table-condensed table-striped">
 					<tr><th colspan="4">
-						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <i><?php echo $parsed_url['host']; ?></i>	
+						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <?php if($this->config->item('show_host')){ ?><i><?php echo $parsed_url['host']; ?></i><?php } ?>
 						<?php if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green" style="color:blue" title="Authenticated server connection"></i>';}?>
-						<span class="server-btns">
+						<span class="server-btns pull-right">
 							<a href="/control/stopall/<?php echo $name; ?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i> Stop all</a>
 							<a href="/control/startall/<?php echo $name; ?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i> Start all</a>
 							<a href="/control/restartall/<?php echo $name; ?>" class="btn btn-mini btn-primary" type="button"><i class="icon icon-refresh icon-white"></i> Restart all</a>
@@ -145,7 +148,7 @@ $muted = (isset($_COOKIE['mute'])?$_COOKIE['mute']:0);
 			</div>
 				<?php
 				}
-				if($alert && !$muted){
+				if($alert && !$muted && $this->config->item('enable_alarm')){
 					echo '<embed height="0" width="0" src="/sounds/alert.mp3">';
 				}
 				if($alert){
