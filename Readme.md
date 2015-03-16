@@ -58,6 +58,7 @@ $config['redmine_assigne_id'] = '69';
 
 ## Thanks to ##
 @stvnwrgs - added authentication functionality to supervisord monitor
+@rk295 - added handling of non authenticated servers
 
 ## Who uses Supervisord Monitor? ##
 
