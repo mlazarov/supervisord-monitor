@@ -43,11 +43,11 @@ vim application/config/supervisor.php
 
 
 ## Redmine integration
-1. Open configuration file:
+1.Open configuration file:
 ```
 vim application/config/config.php
 ```
-2. Change this lines with your redmine url and auto assigne id:
+2.Change this lines with your redmine url and auto assigne id:
 
 ```php
 // Path to Redmine new issue url
