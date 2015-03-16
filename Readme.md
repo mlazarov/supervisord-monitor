@@ -24,7 +24,7 @@ git clone https://github.com/mlazarov/supervisord-monitor.git
 cp pplication/config/supervisor.php.example application/config/supervisor.php
 ```
 
-3. Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
+3.Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
 ```ini
 [inet_http_server]
 port=*:9001
@@ -33,13 +33,13 @@ password="yourpass"
 ```
 Do not forget to restart supervisord service after changing supervisord.conf
 
-4. Edit supervisord-monitor configuration file and add all your supervisord servers
+4.Edit supervisord-monitor configuration file and add all your supervisord servers
 ```
 vim application/config/supervisor.php
 ```
 
-5. Configure your web server to point one of your vhosts to 'public_html' directory.
-6. Open web browser and enter your vhost url.
+5.Configure your web server to point one of your vhosts to 'public_html' directory.
+6.Open web browser and enter your vhost url.
 
 
 ## Redmine integration
