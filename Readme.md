@@ -45,7 +45,7 @@ vim application/config/supervisor.php
 ## Redmine integration
 1.Open configuration file:
 ```
-vim application/config/config.php
+vim application/config/supervisor.php
 ```
 2.Change this lines with your redmine url and auto assigne id:
 
