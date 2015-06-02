@@ -10,19 +10,20 @@ class MY_Controller extends CI_Controller{
 		$this->{$server}->initialize();
 		$this->{$server}->server($config['url'],$config['port']);
 		$this->{$server}->method('supervisor.'.$method);
+		$this->{$server}->timeout($this->config->item('timeout'));
+		
 		if(isset($config['username']) && isset($config['password'])){
 			$this->{$server}->setCredentials($config['username'], $config['password']);
 		}
 		$this->{$server}->request($request);
-			
-                if(!$this->{$server}->send_request()){
-			$response['error'] = $this->{$server}->display_error();
+
+		if(!$this->{$server}->send_request()){
+				$response['error'] = $this->{$server}->display_error();
 		}else{
-	                $response = $this->{$server}->display_response();
+				$response = $this->{$server}->display_response();
 		}	
 		
 		return $response;
 	}
-
 
 }

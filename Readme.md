@@ -56,6 +56,18 @@ $config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
 $config['redmine_assigne_id'] = '69';
 ```
 
+## Troubleshooting
+```
+Did not receive a '200 OK' response from remote server.
+```
+Having this messages in most cases means that Supervisord Monitoring tools does not have direct network access to the Supervisord RPC2 http interface. Check your firewall and network conectivity.
+
+```
+Did not receive a '200 OK' response from remote server. (HTTP/1.0 401 Unauthorized)
+```
+Having "401 Unauthorized" means that you have connection between Supervisord Monitoring tool and Supervisord but the username or password are wrong.
+
+
 ## Thanks to ##
 @stvnwrgs - added authentication functionality to supervisord monitor
 @rk295 - added handling of non authenticated servers
