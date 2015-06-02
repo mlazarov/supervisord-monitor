@@ -24,6 +24,6 @@ class Control extends MY_Controller{
 	}
 	function Clear($server,$worker){
 		$this->_request($server,'clearProcessLogs',array($worker));
-                Redirect('/');
+		Redirect('/');
 	}
 }

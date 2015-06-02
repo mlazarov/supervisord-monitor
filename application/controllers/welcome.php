@@ -24,10 +24,5 @@ class Welcome extends MY_Controller {
 		$data['cfg'] = $servers;
 		$this->load->view('welcome',$data);
 	}
-	public function getAll(){
-		$this->xmlrpc->method('supervisor.getAllProcessInfo');
-		$this->xmlrpc->send_request();
-		print_r($this->xmlrpc->display_response());
-	}
 }
 

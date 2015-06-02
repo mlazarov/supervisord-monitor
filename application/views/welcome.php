@@ -92,7 +92,6 @@
 						
 						$check = $CI->_request($name,'readProcessStderrLog',array($item_name,-1000,0));
 						if(is_array($check)) $check = print_r($check,1);
-
 						
 						if(!is_array($item)){
 								// Not having array means that we have error.
