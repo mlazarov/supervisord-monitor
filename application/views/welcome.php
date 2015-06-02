@@ -97,7 +97,7 @@
 						if(!is_array($item)){
 								// Not having array means that we have error.
 								echo '<tr><td colspan="4">'.$item.'</td></tr>';
-								echo '<tr><td colspan="4">For Troubleshooting <a href="https://github.com/mlazarov/supervisord-monitor#Troubleshooting" target="_blank">check this guide</a></td></tr>';
+								echo '<tr><td colspan="4">For Troubleshooting <a href="https://github.com/mlazarov/supervisord-monitor#troubleshooting" target="_blank">check this guide</a></td></tr>';
 								continue;
 						}
 
