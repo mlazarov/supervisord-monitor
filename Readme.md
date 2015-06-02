@@ -70,8 +70,8 @@ Having `401 Unauthorized` means that you have connection between Supervisord Mon
 
 
 ## Thanks to ##
- @stvnwrgs - added authentication functionality to supervisord monitor
- @rk295 - added handling of non authenticated servers
+* @stvnwrgs - added authentication functionality to supervisord monitor
+* @rk295 - added handling of non authenticated servers
 
 ## Who uses Supervisord Monitor? ##
 
