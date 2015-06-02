@@ -29,7 +29,7 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
 			<li class="active"><a href="<?php echo site_url();?>">Home</a></li>
-              <li><a href="?mute=<?php echo $muted?0:1;?>"><i class="icon-music icon-white"></i>&nbsp;<?php
+              <li><a href="?mute=<?php echo ($muted?-1:1);?>"><i class="icon-music icon-white"></i>&nbsp;<?php
 			if($muted){
 				echo "Unmute";
 			}else{
@@ -50,7 +50,7 @@
 		<?php
 		if($muted){
 			echo '<div class="row"><div class="span4 offset4 label label-important" style="padding:10px;margin-bottom:20px;text-align:center;">';
-			echo 'Sound muted for '.timespan(time(),$muted).' <span class="pull-right"><a href="?mute=0" style="color:white;"><i class="icon-music icon-white"></i> Unmute</a></span></div></div>';
+			echo 'Sound muted for '.timespan(time(),$muted).' <span class="pull-right"><a href="?mute=-1" style="color:white;"><i class="icon-music icon-white"></i> Unmute</a></span></div></div>';
 		}
 	
 		?>

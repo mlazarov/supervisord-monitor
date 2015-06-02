@@ -9,7 +9,7 @@ class Welcome extends MY_Controller {
 			setcookie('mute',$mute_time,$mute_time,'/');
 			Redirect();
 		}
-		if($this->input->get('mute')===0){
+		if($this->input->get('mute')===-1){
 			setcookie('mute',0,time()-1,'/');
 			Redirect();
 		}
