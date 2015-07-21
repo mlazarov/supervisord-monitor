@@ -193,7 +193,9 @@
 	var $refresh = <?php echo $this->config->item('refresh');?>;
 	var $timer = false;
 	$(window).load(function() {
-		startTimer();
+		if($refresh > 0) {
+			startTimer();
+		}
   	});
 	function stopTimer(){
 		$('#refresh').html('(p)');
