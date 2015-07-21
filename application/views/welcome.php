@@ -75,9 +75,9 @@
 						if(!isset($procs['error'])){
 						?>
 						<span class="server-btns pull-right">
-							<a href="/control/stopall/<?php echo $name; ?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i> Stop all</a>
-							<a href="/control/startall/<?php echo $name; ?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i> Start all</a>
-							<a href="/control/restartall/<?php echo $name; ?>" class="btn btn-mini btn-primary" type="button"><i class="icon icon-refresh icon-white"></i> Restart all</a>
+							<a href="<?php echo site_url('/control/stopall/'.$name); ?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i> Stop all</a>
+							<a href="<?php echo site_url('/control/startall/'.$name); ?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i> Start all</a>
+							<a href="<?php echo site_url('/control/restartall/'.$name); ?>" class="btn btn-mini btn-primary" type="button"><i class="icon icon-refresh icon-white"></i> Restart all</a>
 						</span>
 						<?php
 						}
@@ -118,7 +118,7 @@
 								echo $item_name;
 								if($check){
 									$alert = true;
-									echo '<span class="pull-right"><a href="/control/clear/'.$name.'/'.$item_name.'" id="'.$name.'_'.$item_name.
+									echo '<span class="pull-right"><a href="'.site_url('/control/clear/'.$name.'/'.$item_name).'" id="'.$name.'_'.$item_name.
 											'" onclick="return false" data-toggle="popover" data-message="'.htmlspecialchars($check).'" data-original-title="'.
 											$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="/img/alert_icon.png" /></a></span>';
 								}
@@ -138,9 +138,9 @@
 									</ul>
 								</div//-->
 								<?php if($status=='RUNNING'){ ?>
-								<a href="/control/stop/<?php echo $name.'/'.$item_name;?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
+								<a href="<?php echo site_url('/control/stop/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
 								<?php } if($status=='STOPPED' || $status == 'EXITED'){ ?>
-								<a href="/control/start/<?php echo $name.'/'.$item_name;?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
+								<a href="<?php echo site_url('/control/start/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
 								<?php } ?>
 							</td>
 						</tr>
@@ -153,7 +153,7 @@
 				<?php
 				}
 				if($alert && !$muted && $this->config->item('enable_alarm')){
-					echo '<embed height="0" width="0" src="/sounds/alert.mp3">';
+					echo '<embed height="0" width="0" src="'.site_url('/sounds/alert.mp3').'">';
 				}
 				if($alert){
 					echo '<title>!!! WARNING !!!</title>';
@@ -210,7 +210,7 @@
 		$('#refresh').html('('+$refresh+')');
 		if($refresh<=0){
 			stopTimer();
-			location.href="<?php echo $this->config->item('base_url') ?>";
+			location.href="<?php echo site_url() ?>";
 		}
 		
 	}
