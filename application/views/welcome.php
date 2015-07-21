@@ -208,7 +208,7 @@
 		$('#refresh').html('('+$refresh+')');
 		if($refresh<=0){
 			stopTimer();
-			location.href="/";
+			location.href="<?php echo $this->config->item('base_url') ?>";
 		}
 		
 	}
