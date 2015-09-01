@@ -62,11 +62,14 @@ Did not receive a '200 OK' response from remote server.
 ```
 Having this messages in most cases means that Supervisord Monitoring tools does not have direct network access to the Supervisord RPC2 http interface. Check your firewall and network conectivity.
 
+---
 
 ```
 Did not receive a '200 OK' response from remote server. (HTTP/1.0 401 Unauthorized)
 ```
 Having `401 Unauthorized` means that you have connection between Supervisord Monitoring tool and Supervisord but the username or password are wrong.
+
+---
 
 ```
 UNKNOWN_METHOD
@@ -88,6 +91,8 @@ If you don’t want supervisor to do anything it doesn’t already do out of the
 
 For more information go to the offitial Supervisord Configuration Docs:
 http://supervisord.org/configuration.html#rpcinterface-x-section-settings
+
+---
 
 ## Thanks to ##
 - [stvnwrgs](https://github.com/stvnwrgs) - added authentication functionality to supervisord monitor
