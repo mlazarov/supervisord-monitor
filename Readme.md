@@ -68,6 +68,26 @@ Did not receive a '200 OK' response from remote server. (HTTP/1.0 401 Unauthoriz
 ```
 Having `401 Unauthorized` means that you have connection between Supervisord Monitoring tool and Supervisord but the username or password are wrong.
 
+```
+UNKNOWN_METHOD
+```
+Having this message means that your supervisord service doesn't have rpc interface enabled (only for v3+ of Supervisord). 
+To enable the rpc interface add this lines to the configuration file:
+
+*From the Supervisord Docs*
+
+In the sample config file, there is a section which is named [rpcinterface:supervisor]. By default it looks like the following:
+
+```
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory = supervisor.rpcinterface:make_main_rpcinterface
+```
+
+The [rpcinterface:supervisor] section must remain in the configuration for the standard setup of supervisor to work properly. 
+If you don’t want supervisor to do anything it doesn’t already do out of the box, this is all you need to know about this type of section.
+
+For more information go to the offitial Supervisord Configuration Docs:
+http://supervisord.org/configuration.html#rpcinterface-x-section-settings
 
 ## Thanks to ##
 - [stvnwrgs](https://github.com/stvnwrgs) - added authentication functionality to supervisord monitor
