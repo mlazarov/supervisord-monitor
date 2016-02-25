@@ -94,6 +94,14 @@ http://supervisord.org/configuration.html#rpcinterface-x-section-settings
 
 ---
 
+```
+The requested URL /control/ ... was not found on this server.
+```
+
+If you are getting this error on every action (stop, start, restart etc) most probably your web server isn't respecting the .htaccess file found in `public_html` directory. 
+To test this you can add `AllowOverride All` config to the httpd.conf (if you are using Apache) or to add the rules from the .htaccess file to the httpd.conf file.
+
+
 ## Thanks to ##
 - [stvnwrgs](https://github.com/stvnwrgs) - added authentication functionality to supervisord monitor
 - [rk295](https://github.com/rk295) - added handling of non authenticated servers
