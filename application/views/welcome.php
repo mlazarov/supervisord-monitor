@@ -107,7 +107,7 @@
 							list($pid,$uptime) = explode(",",$item['description']);
 						}
 						elseif($status=='STARTING') $class = 'info';
-						elseif($status=='FATAL') $class = 'important';
+						elseif($status=='FATAL') { $class = 'important'; $alert = true; }
 						elseif($status=='STOPPED') $class = 'inverse';
 						else $class = 'error';
 
@@ -139,7 +139,7 @@
 								</div//-->
 								<?php if($status=='RUNNING'){ ?>
 								<a href="<?php echo site_url('/control/stop/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
-								<?php } if($status=='STOPPED' || $status == 'EXITED'){ ?>
+								<?php } if($status=='STOPPED' || $status == 'EXITED' || $status=='FATAL'){ ?>
 								<a href="<?php echo site_url('/control/start/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
 								<?php } ?>
 							</td>
