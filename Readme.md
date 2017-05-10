@@ -21,7 +21,7 @@ git clone https://github.com/mlazarov/supervisord-monitor.git
 
 2.Copy application/config/supervisor.php.example to application/config/supervisor.php
 ```
-cp supervisord-monitor/application/config/supervisor.php.example application/config/supervisor.php
+cp supervisord-monitor/application/config/supervisor.php.example supervisord-monitor/application/config/supervisor.php
 ```
 
 3.Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
