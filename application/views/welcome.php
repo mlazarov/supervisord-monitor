@@ -127,7 +127,7 @@
 							</td>
 							<td width="10"><span class="label label-<?php echo $class;?>"><?php echo $status;?></span></td>
 							<td width="80" style="text-align:right"><?php echo $uptime;?></td>
-							<td style="width:1%">
+							<td style="width:1%; white-space:nowrap;">
 								<!--div class="btn-group">
 									<button class="btn btn-mini">Action</button>
 									<button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
@@ -143,6 +143,7 @@
 								<?php } if($status=='STOPPED' || $status == 'EXITED' || $status=='FATAL'){ ?>
 								<a href="<?php echo site_url('/control/start/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
 								<?php } ?>
+								<a href="<?php echo $ui_url.'logtail/'.$item_name ?>" class="btn btn-mini" type="button" target="_blank"><i class="icon-list-alt"></i></a>
 							</td>
 						</tr>
 						<?php
