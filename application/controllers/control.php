@@ -16,6 +16,12 @@ class Control extends MY_Controller{
 		$this->_request($server,'stopAllProcesses',array(1));
 		Redirect('/');
 	}
+	function Restart($server,$worker){
+		$this->_request($server,'stopProcess',array($worker,1));
+		sleep(2);
+		$this->_request($server,'startProcess',array($worker,1));
+		Redirect('/');
+	}
 	function Restartall($server){
 		$this->_request($server,'stopAllProcesses',array(1));
 		sleep(2);

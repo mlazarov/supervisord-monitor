@@ -5,7 +5,7 @@
 ## Features
 
 * Monitor unlimited supervisord servers and processes
-* Start/Stop process
+* Start/Stop/Restart process
 * Read stderr log
 * Start new Redmine ticket when stderr occurs
 * Sound alert when stderr occurs
