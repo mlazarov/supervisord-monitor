@@ -1,0 +1,14 @@
+{
+  "name": "supervisord-monitor",
+  "version": "1.0.0",
+  "description": "Supervisord Multi Server Monitoring Tool",
+  "author": "Martin Lazarov",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlazarov/supervisord-monitor"
+  },
+  "bugs": {
+    "url": "https://github.com/mlazarov/supervisord-monitor/issues"
+  },
+  "license": "MIT"
+}

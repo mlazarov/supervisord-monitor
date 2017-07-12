@@ -37,23 +37,23 @@ body{
 }
 
 .icon-red {
-  background-image: url("/img/glyphicons-halflings-red.png") !important;
+  background-image: url("../img/glyphicons-halflings-red.png") !important;
 }
 .icon-purple {
-  background-image: url("/img/glyphicons-halflings-purple.png") !important;
+  background-image: url("../img/glyphicons-halflings-purple.png") !important;
 }
 .icon-blue {
-  background-image: url("/img/glyphicons-halflings-blue.png") !important;
+  background-image: url("../img/glyphicons-halflings-blue.png") !important;
 }
 .icon-lightblue {
-  background-image: url("/img/glyphicons-halflings-lightblue.png") !important;
+  background-image: url("../img/glyphicons-halflings-lightblue.png") !important;
 }
 .icon-green {
-  background-image: url("/img/glyphicons-halflings-green.png") !important;
+  background-image: url("../img/glyphicons-halflings-green.png") !important;
 }
 .icon-yellow {
-  background-image: url("/img/glyphicons-halflings-yellow.png") !important;
+  background-image: url("../img/glyphicons-halflings-yellow.png") !important;
 }
 .icon-orange {
-  background-image: url("/img/glyphicons-halflings-orange.png") !important;
+  background-image: url("../img/glyphicons-halflings-orange.png") !important;
 }

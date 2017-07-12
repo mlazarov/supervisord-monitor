@@ -1,0 +1,5 @@
+{
+	"name": "mlazarov/supervisord-monitor",
+	"description": "Supervisord Multi Server Monitoring Tool",
+	"license": "MIT"
+}
