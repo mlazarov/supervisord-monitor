@@ -4,11 +4,11 @@
 	<meta charset="utf-8">
 	<title>Supervisord Monitoring</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/bootstrap.min.css');?>"/>
-	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/bootstrap-responsive.min.css');?>"/>
-	<link type="text/css" rel="stylesheet" href="<?php echo site_url('/css/custom.css');?>"/>
-<script type="text/javascript" src="<?php echo site_url('/js/jquery-1.10.1.min.js');?>"></script>
-<script type="text/javascript" src="<?php echo site_url('/js/bootstrap.min.js');?>"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url('/css/bootstrap.min.css');?>"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url('/css/bootstrap-responsive.min.css');?>"/>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url('/css/custom.css');?>"/>
+<script type="text/javascript" src="<?php echo base_url('/js/jquery-1.10.1.min.js');?>"></script>
+<script type="text/javascript" src="<?php echo base_url('/js/bootstrap.min.js');?>"></script>
 	<noscript>
 	<?php
 	if($this->config->item('refresh')){ ?>
@@ -121,7 +121,7 @@
 									$alert = true;
 									echo '<span class="pull-right"><a href="'.site_url('/control/clear/'.$name.'/'.$item_name).'" id="'.$name.'_'.$item_name.
 											'" onclick="return false" data-toggle="popover" data-message="'.htmlspecialchars($check).'" data-original-title="'.
-											$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="/img/alert_icon.png" /></a></span>';
+											$item_name.'@'.$name.'" class="pop btn btn-mini btn-danger"><img src="' . base_url('/img/alert_icon.png') . '" /></a></span>';
 								}
 								?>
 							</td>
@@ -157,7 +157,7 @@
 				<?php
 				}
 				if($alert && !$muted && $this->config->item('enable_alarm')){
-					echo '<embed height="0" width="0" src="'.site_url('/sounds/alert.mp3').'">';
+					echo '<embed height="0" width="0" src="'.base_url('/sounds/alert.mp3').'">';
 				}
 				if($alert){
 					echo '<title>!!! WARNING !!!</title>';
