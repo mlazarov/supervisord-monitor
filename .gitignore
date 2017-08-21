@@ -1,4 +1,6 @@
-application/config/supervisor.php
 composer.phar
 composer.lock
 /vendor
+.idea
+supervisord-monitor.iml
+*.db
