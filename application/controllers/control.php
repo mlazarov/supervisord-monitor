@@ -32,4 +32,27 @@ class Control extends MY_Controller{
 		$this->_request($server,'clearProcessLogs',array($worker));
 		Redirect('/');
 	}
+	function AddServer() {
+		try {
+			$name = $_POST['name'];
+			$ip = $_POST['ip'];
+			$port = $_POST['port'];
+			$username = $_POST['username'];
+			$password = $_POST['password'];
+			$sqlite_db = new PDO('sqlite:' . $this->config->item('sqlite_db_path'));
+			$sqlite_db->exec("insert into " . $this->config->item('sqlite_db_table') . " values ('$name', '$ip', '$port', '$username', '$password')");
+			Redirect('/');
+		} catch (Exception $e) {
+			echo json_encode("add server error");
+		}
+	}
+	function DelServer($server) {
+		try {
+			$sqlite_db = new PDO('sqlite:' . $this->config->item('sqlite_db_path'));
+			$sqlite_db->exec("delete from " . $this->config->item('sqlite_db_table') . " where name='$server'");
+			Redirect('/');
+		} catch (Exception $e) {
+			echo json_encode("delete server error");
+		}
+	}
 }

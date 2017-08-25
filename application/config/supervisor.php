@@ -13,22 +13,20 @@ $config['enable_alarm'] = true;
 // Show hostname after server name
 $config['show_host'] = false;
 
-$config['supervisor_servers'] = array(
-	'server01' => array(
-		'url' => 'http://server01.app/RPC2',
-		'port' => '9001',
-		'username' => 'yourusername',
-		'password' => 'yourpass'
-	),
-	'server02' => array(
-		'url' => 'http://server02.app/RPC2',
-                'port' => '9001'
-	),
-	'server03' => array(
-                'url' => 'http://server03.app/RPC2',
-                'port' => '9001'
-        ),
-);
+$config['sqlite_db_path'] = '../sqlite.db';
+$config['sqlite_db_table'] = 'servers';
+
+$servers = array();
+$sqlite_db = new PDO('sqlite:' . $config['sqlite_db_path']);
+foreach ($sqlite_db->query('select * from ' . $config['sqlite_db_table']) as $server) {
+    $servers[$server['name']] = array(
+		'url' => 'http://' . $server['ip'] . '/RPC2',
+		'port' => $server['port'],
+		'username' => $server['username'],
+		'password' => $server['password']
+    );
+}
+$config['supervisor_servers'] = $servers;
 
 // Set timeout connecting to remote supervisord RPC2 interface
 $config['timeout'] = 3;
@@ -38,5 +36,3 @@ $config['redmine_url'] = 'http://redmine.url/path_to_new_issue_url';
 
 // Default Redmine assigne ID
 $config['redmine_assigne_id'] = '69';
-
-

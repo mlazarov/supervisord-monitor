@@ -38,6 +38,7 @@
 		;?></a></li>
 		<li><a href="<?php echo site_url();?>">Refresh <b id="refresh">(<?php echo $this->config->item('refresh');?>)</b> &nbsp;</a></li>
               <li><a href="mailto:martin@lazarov.bg">Contact</a></li>
+                <li id="add-server"><a>Add</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -46,6 +47,19 @@
 	
 
 	<div class="container">
+
+        <form id="add-server-form" method="post" hidden="true">
+            <div class="modal-body">
+                <input type="text" name="name" placeholder="server_name" value="localhost"/>
+                <input type="text" name="ip" placeholder="ip" value="127.0.0.1"/>
+                <input type="text" name="port" placeholder="port" value="9001"/>
+                <input type="text" name="username" placeholder="username" value="admin"/>
+                <input type="text" name="password" placeholder="password" value="admin"/>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" value="SUBMIT" class="btn" />
+            </div>
+        </form>
 	
 		<?php
 		if($muted){
@@ -70,6 +84,7 @@
 				<table class="table table-bordered table-condensed table-striped">
 					<tr><th colspan="4">
 						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <?php if($this->config->item('show_host')){ ?><i><?php echo $parsed_url['host']; ?></i><?php } ?>
+                       <a id="del-server" class="icon-trash icon-red" style="color:red" title="Delete server" href="<?php echo site_url('/control/delserver/'.$name); ?>"></a>
 						<?php
 						if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green" style="color:blue" title="Authenticated server connection"></i>';}
 						echo '&nbsp;<i>'.$version[$name].'</i>';
@@ -212,16 +227,31 @@
 	function timer(){
 		$refresh--;
 		$('#refresh').html('('+$refresh+')');
-		if($refresh<=0){
+		if($refresh<=0 && !$('#add-server-form').is(':visible')){
 			stopTimer();
 			location.href="<?php echo site_url() ?>";
 		}
-		
 	}
 	function nl2br (str, is_xhtml) {
 		var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br ' + '/>' : '<br>';
 		return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 	}
+    $(function(){
+      $('#add-server').on('click', function(e) {
+        $('#add-server-form').toggle();
+      });
+      $('#add-server-form').on('submit', function(e){
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '/control/addserver',
+          data: $('#add-server-form').serialize(),
+          success: function(data){
+            location.href="<?php echo site_url() ?>";
+          }
+        });
+      });
+    });
 	</script>
 
 </body>

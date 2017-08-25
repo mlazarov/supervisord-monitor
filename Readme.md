@@ -14,35 +14,38 @@
 
 ## Install
 
-1.Clone supervisord-monitor to your vhost/webroot:
-```
+1. Clone supervisord-monitor to your vhost/webroot:
+
+```bash
 git clone https://github.com/mlazarov/supervisord-monitor.git
 ```
 
-2.Copy application/config/supervisor.php.example to application/config/supervisor.php
-```
-cp supervisord-monitor/application/config/supervisor.php.example supervisord-monitor/application/config/supervisor.php
+2. Construct sqlite DB
+
+```bash
+cd supervisord-monitor
+sqlite3 sqlite.db < sqlite.sql
 ```
 
-3.Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
+3. Configure your web server to point one of your vhosts to 'public_html' directory.
+
+4. Open web browser and enter your vhost url.
+
+5. Enable/Uncomment inet_http_server (found in supervisord.conf) for all your supervisord servers.
+
+   Do not forget to restart supervisord service after changing supervisord.conf
+
 ```ini
 [inet_http_server]
 port=*:9001
 username="yourusername"
 password="yourpass"
 ```
-Do not forget to restart supervisord service after changing supervisord.conf
 
-4.Edit supervisord-monitor configuration file and add all your supervisord servers
-```
-vim application/config/supervisor.php
-```
-
-5.Configure your web server to point one of your vhosts to 'public_html' directory.
-6.Open web browser and enter your vhost url.
-
+6. Add your supervisord servers by using "Add" button.
 
 ## Redmine integration
+
 1.Open configuration file:
 ```
 vim application/config/supervisor.php
