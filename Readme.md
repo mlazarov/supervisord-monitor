@@ -28,8 +28,8 @@ cp supervisord-monitor/application/config/supervisor.php.example supervisord-mon
 ```ini
 [inet_http_server]
 port=*:9001
-username="yourusername"
-password="yourpass"
+username=yourusername
+password=yourpass
 ```
 Do not forget to restart supervisord service after changing supervisord.conf
 
