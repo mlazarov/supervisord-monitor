@@ -68,7 +68,7 @@
 				?>
 				<div class="span<?php echo ($this->config->item('supervisor_cols')==2?'6':'4');?>">
 				<table class="table table-bordered table-condensed table-striped">
-					<tr><th colspan="4">
+					<tr><th colspan="5">
 						<a href="<?php echo $ui_url; ?>"><?php echo $name; ?></a> <?php if($this->config->item('show_host')){ ?><i><?php echo $parsed_url['host']; ?></i><?php } ?>
 						<?php
 						if(isset($cfg[$name]['username'])){echo '<i class="icon-lock icon-green" style="color:blue" title="Authenticated server connection"></i>';}
@@ -86,10 +86,21 @@
 					</th></tr>
 					<?php
 					$CI = &get_instance();
+					$last_group=null;
+					$group_count=array();
 					foreach($procs as $item){
-
+						if(empty($group_count[$item['group']])){
+							$group_count[$item['group']]=1;
+						}else{
+							$group_count[$item['group']]++;
+						}
+					}
+					foreach($procs as $item){
+						
 						if($item['group'] != $item['name']) $item_name = $item['group'].":".$item['name'];
 						else $item_name = $item['name'];
+						
+						
 						
 						$check = $CI->_request($name,'readProcessStderrLog',array($item_name,-1000,0));
 						if(is_array($check)) $check = print_r($check,1);
@@ -113,10 +124,26 @@
 						else $class = 'error';
 
 						$uptime = str_replace("uptime ","",$uptime);
+	
 						?>
 						<tr>
-							<td><?php
-								echo $item_name;
+							<?php
+								if($last_group!=$item['group']){
+									$last_group=$item['group'];
+									echo '<td rowspan="'.$group_count[$item['group']].'">'.$last_group;
+									?>
+									<div class="actions">
+										<a href="<?php echo site_url('/control/stopgroup/'.$name.'/'.$last_group);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
+										<a href="<?php echo site_url('/control/restartgroup/'.$name.'/'.$last_group);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-refresh icon-white"></i></a>
+									
+									</div>
+									</td><td>
+							<?php
+								}else{
+									echo '<td>';
+								}
+							
+								echo $item['name'];
 								if($check){
 									$alert = true;
 									echo '<span class="pull-right"><a href="'.site_url('/control/clear/'.$name.'/'.$item_name).'" id="'.$name.'_'.$item_name.
@@ -141,7 +168,7 @@
 								<div class="actions">
 									<?php if($status=='RUNNING'){ ?>
 									<a href="<?php echo site_url('/control/stop/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-stop icon-white"></i></a>
-									<a href="<?php echo site_url('/control/restart/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-refresh icon-white"></i></a>
+									<a href="<?php echo site_url('/control/restart/'.$name.'/'.$item['name']);?>" class="btn btn-mini btn-inverse" type="button"><i class="icon-refresh icon-white"></i></a>
 									<?php } if($status=='STOPPED' || $status == 'EXITED' || $status=='FATAL'){ ?>
 									<a href="<?php echo site_url('/control/start/'.$name.'/'.$item_name);?>" class="btn btn-mini btn-success" type="button"><i class="icon-play icon-white"></i></a>
 									<?php } ?>
